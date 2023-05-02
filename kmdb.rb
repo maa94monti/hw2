@@ -113,7 +113,7 @@ dark_knight_returns["rated"] = "PG-13"
 dark_knight_returns["studio_id"] = warner["id"]
 dark_knight_returns.save
 
-#actors
+#info on batman begins - actors
 
 bale = Actor.new
 bale["name"] = "Christian Bale"
@@ -134,6 +134,53 @@ holmes.save
 oldman = Actor.new
 oldman["name"] = "Gary Oldman"
 oldman.save
+
+#info on batman begins - roles
+
+batman_begins_id = Movie.find_by({"title" => "Batman Begins"})
+bale_id = Actor.find_by({"name" => "Christian Bale"})
+caine_id = Actor.find_by({"name" => "Michael Caine"})
+neeson_id = Actor.find_by({"name" => "Liam Neeson"})
+holmes_id = Actor.find_by({"name" => "Katie Holmes"})
+oldman_id = Actor.find_by({"name" => "Gary Oldman"})
+
+role_1 = Role.new
+role_1["movie_id"] = batman_begins_id["id"]
+role_1["actor_id"] = bale_id["id"]
+role_1["character_name"] = "Bruce Wayne"
+role_1.save
+
+role_2 = Role.new
+role_2["movie_id"] = batman_begins_id["id"]
+role_2["actor_id"] = caine_id["id"]
+role_2["character_name"] = "Alfred"
+role_2.save
+
+role_3 = Role.new
+role_3["movie_id"] = batman_begins_id["id"]
+role_3["actor_id"] = neeson_id["id"]
+role_3["character_name"] = "Ra's Al Ghul"
+role_3.save
+
+role_4 = Role.new
+role_4["movie_id"] = batman_begins_id["id"]
+role_4["actor_id"] = holmes_id["id"]
+role_4["character_name"] = "Rachel Dawes"
+role_4.save
+
+role_5 = Role.new
+role_5["movie_id"] = batman_begins_id["id"]
+role_5["actor_id"] = oldman_id["id"]
+role_5["character_name"] = "Commissioner Gordon"
+role_5.save
+
+#info on batman begins - roles
+dark_knight_id = Movie.find_by({"title" => "The Dark Knight"})
+
+
+
+
+
 
 
 
