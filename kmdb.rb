@@ -84,9 +84,56 @@ Role.destroy_all
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
+#studios
 new_studio = Studio.new
 new_studio["name"] = "Warner Bros."
 new_studio.save
+
+#movies
+warner = Studio.find_by({"name" => "Warner Bros."})
+
+batman_begins = Movie.new
+batman_begins["title"] = "Batman Begins"
+batman_begins["year_released"] = 2005
+batman_begins["rated"] = "PG-13"
+batman_begins["studio_id"] = warner["id"]
+batman_begins.save
+
+dark_knight = Movie.new
+dark_knight["title"] = "The Dark Knight"
+dark_knight["year_released"] = 2008
+dark_knight["rated"] = "PG-13"
+dark_knight["studio_id"] = warner["id"]
+dark_knight.save
+
+dark_knight_returns = Movie.new
+dark_knight_returns["title"] = "The Dark Knight Rises"
+dark_knight_returns["year_released"] = 2012
+dark_knight_returns["rated"] = "PG-13"
+dark_knight_returns["studio_id"] = warner["id"]
+dark_knight_returns.save
+
+#actors
+
+bale = Actor.new
+bale["name"] = "Christian Bale"
+bale.save
+
+caine = Actor.new
+caine["name"] = "Michael Caine"
+caine.save
+
+neeson = Actor.new
+neeson["name"] = "Liam Neeson"
+neeson.save
+
+holmes = Actor.new
+holmes["name"] = "Katie Holmes"
+holmes.save
+
+oldman = Actor.new
+oldman["name"] = "Gary Oldman"
+oldman.save
 
 
 
