@@ -138,6 +138,7 @@ oldman.save
 #info on batman begins - roles
 
 batman_begins_id = Movie.find_by({"title" => "Batman Begins"})
+
 bale_id = Actor.find_by({"name" => "Christian Bale"})
 caine_id = Actor.find_by({"name" => "Michael Caine"})
 neeson_id = Actor.find_by({"name" => "Liam Neeson"})
@@ -174,14 +175,109 @@ role_5["actor_id"] = oldman_id["id"]
 role_5["character_name"] = "Commissioner Gordon"
 role_5.save
 
-#info on batman begins - roles
+#info on the dark knight - actors
+
+ledger = Actor.new
+ledger["name"] = "Heath Ledger"
+ledger.save
+
+eckhart = Actor.new
+eckhart["name"] = "Aaron Eckhart"
+eckhart.save
+
+gyllenhaal = Actor.new
+gyllenhaal["name"] = "Maggie Gyllenhaal"
+gyllenhaal.save
+
+#info on the dark knight - roles
+
 dark_knight_id = Movie.find_by({"title" => "The Dark Knight"})
 
+ledger_id = Actor.find_by({"name" => "Heath Ledger"})
+eckhart_id = Actor.find_by({"name" => "Aaron Eckhart"})
+gyllenhaal_id = Actor.find_by({"name" => "Maggie Gyllenhaal"})
 
+role_6 = Role.new
+role_6["movie_id"] = dark_knight_id["id"]
+role_6["actor_id"] = bale_id["id"]
+role_6["character_name"] = "Bruce Wayne"
+role_6.save
 
+role_7 = Role.new
+role_7["movie_id"] = dark_knight_id["id"]
+role_7["actor_id"] = ledger_id["id"]
+role_7["character_name"] = "Joker"
+role_7.save
 
+role_8 = Role.new
+role_8["movie_id"] = dark_knight_id["id"]
+role_8["actor_id"] = eckhart_id["id"]
+role_8["character_name"] = "Harvey Dent"
+role_8.save
 
+role_9 = Role.new
+role_9["movie_id"] = dark_knight_id["id"]
+role_9["actor_id"] = gyllenhaal_id["id"]
+role_9["character_name"] = "Rachel Dawes"
+role_9.save
 
+role_10 = Role.new
+role_10["movie_id"] = dark_knight_id["id"]
+role_10["actor_id"] = caine_id["id"]
+role_10["character_name"] = "Alfred"
+role_10.save
+
+#info on the dark knight rises - actors
+
+hardy = Actor.new
+hardy["name"] = "Tom Hardy"
+hardy.save
+
+jgl = Actor.new
+jgl["name"] = "Joseph Gordon-Levitt"
+jgl.save
+
+hathaway = Actor.new
+hathaway["name"] = "Anne Hathaway"
+hathaway.save
+
+#info on the dark knight rises - roles
+
+dark_knight_rises_id = Movie.find_by({"title" => "The Dark Knight Rises"})
+
+hardy_id = Actor.find_by({"name" => "Tom Hardy"})
+jgl_id = Actor.find_by({"name" => "Joseph Gordon-Levitt"})
+hathaway_id = Actor.find_by({"name" => "Anne Hathaway"})
+
+role_11 = Role.new
+role_11["movie_id"] = dark_knight_rises_id["id"]
+role_11["actor_id"] = bale_id["id"]
+role_11["character_name"] = "Bruce Wayne"
+role_11.save
+
+role_12 = Role.new
+role_12["movie_id"] = dark_knight_rises_id["id"]
+role_12["actor_id"] = oldman_id["id"]
+role_12["character_name"] = "Commissioner Gordon"
+role_12.save
+
+role_13 = Role.new
+role_13["movie_id"] = dark_knight_rises_id["id"]
+role_13["actor_id"] = hardy_id["id"]
+role_13["character_name"] = "Bane"
+role_13.save
+
+role_14 = Role.new
+role_14["movie_id"] = dark_knight_rises_id["id"]
+role_14["actor_id"] = jgl_id["id"]
+role_14["character_name"] = "John Blake"
+role_14.save
+
+role_15 = Role.new
+role_15["movie_id"] = dark_knight_rises_id["id"]
+role_15["actor_id"] = hathaway_id["id"]
+role_15["character_name"] = "Selina Kyle"
+role_15.save
 
 
 # Prints a header for the movies output
@@ -191,6 +287,15 @@ puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
+movie_to_print = Movie.all
+for movies in movie_to_print
+    title = movies["title"]
+    year_released = movies["year_released"]
+    rated = movies["rated"]
+    studio = Studio.find_by({"id" => movies["studio_id"]})
+    studio_name = studio["name"]
+    puts "#{title} #{year_released} #{rated} #{studio_name}"
+end
 
 # Prints a header for the cast output
 puts ""
@@ -200,3 +305,13 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+cast_to_print = Role.all
+for roles in cast_to_print
+    movie = Movie.find_by({"id" => roles["movie_id"]})
+    actor = Actor.find_by({"id" => roles["actor_id"]})
+    movie_title = movie["title"]
+    actor_name = actor["name"]
+    character_name = roles["character_name"] 
+    puts "#{movie_title} #{actor_name} #{character_name}"
+end
